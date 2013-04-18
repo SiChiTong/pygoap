@@ -137,6 +137,6 @@ class GoapAgent(ObjectBase):
 
         # our action is still running, just run that
         elif self.current_action.state == ACTIONSTATE_RUNNING:
-            return current_action
+            return self.current_action
 
 

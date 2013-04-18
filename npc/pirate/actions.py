@@ -24,13 +24,13 @@ def get_position(entity, memory):
 class MoveAction(ActionContext):
     def update(self, time):
         super(MoveAction, self).update(time)
-        if self.caller.position[1] == self.endpoint:
+        if get_position(self.caller, self.caller.memory)[1] == self.endpoint:
             self.finish()
         else:
             env = self.caller.environment
-            path = env.pathfind(self.caller.position[1], self.endpoint)
-            path.pop() # this will always the the starting position
-            env.move(self.caller, (env, path.pop()))
+            path = env.pathfind(get_position(self.caller, self.caller.memory)[1], self.endpoint)
+            path.pop() # this will always be the starting position
+            env.set_position(self.caller, (env, path.pop()))
 
     def setStartpoint(self, pos):
         self.startpoint = pos
@@ -52,7 +52,7 @@ class DrinkRumAction(ActionContext):
         super(drink_rum, self).start()
         
     def update(self, time):
-        if self.valid():
+        if self.test(self.caller.memory):
             self.caller.drunkness += 1
             if self.caller.drunkness == 5:
                 self.finish()

@@ -52,6 +52,7 @@ class Human(GoapAgent):
         super(Human, self).__init__()
         self.gender = gender
         self.name = name
+        self.drunkness = 0
 
     def __repr__(self):
         return "<Human: %s>" % self.gender

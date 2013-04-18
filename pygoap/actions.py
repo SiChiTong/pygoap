@@ -122,9 +122,12 @@ class ActionContext(object):
         modify numerical values, it may be useful to return a fractional value.
         """
 
-        if memory is None: raise Exception
+        if memory is None:
+            raise ValueError, "No memory argument given."
 
-        if not self.prereqs: return 1.0
+        if not self.prereqs:
+            return 1.0
+
         values = ( i.test(memory) for i in self.prereqs )
 
         try:
