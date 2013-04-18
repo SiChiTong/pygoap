@@ -139,4 +139,11 @@ class GoapAgent(ObjectBase):
         elif self.current_action.state == ACTIONSTATE_RUNNING:
             return self.current_action
 
+        # our action has not started, do nothing
+        elif self.current_action.state == ACTIONSTATE_NOT_STARTED:
+            return None
+
+        else:
+            raise NotImplementedError, "I don't know what to do in state: %d" % self.current_action.state
+
 
