@@ -92,7 +92,7 @@ class GoapAgent(ObjectBase):
         s = [ g for g in s if g[0] > 0.0 ]
         s.sort(reverse=True)
 
-        debug("[agent] goals %s", s)
+        debug("[agent] %s has goals %s", self, s)
 
         # starting for the most relevant goal, attempt to make a plan
         plan = []      

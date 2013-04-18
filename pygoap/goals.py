@@ -15,6 +15,7 @@ finished successfully.
 """
 
 from blackboard import MemoryManager
+from environment2d import distance
 from precepts import *
 import sys, logging
 
@@ -186,11 +187,11 @@ class PositionGoal(GoalBase):
 
     def test(self, memory):
         """
-        search memory for last known position of the target if target is not
-        in agent's memory return 0.0.
+        search memory for last known position of the target,
+        if target is not in agent's memory return 0.0.
 
-        do pathfinding and determine if the target is accessable
-            - if not return 0.0
+        do pathfinding and determine if the target is accessible,
+        if not return 0.0
 
         determine the distance required to travel to the target
         return 1.0 if the target is reachable

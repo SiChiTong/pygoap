@@ -4,7 +4,7 @@ This is an example module for programming actions for a pyGOAP agent.
 The module must contain a list called "exported_actions".  This list should
 contain any classes that you would like to add to the planner.
 
-To make it convienent, I have chosen to add the class to the list after each
+To make it convenient, I have chosen to add the class to the list after each
 declaration, although you may choose another way.
 """
 
@@ -96,13 +96,13 @@ class pickup(ActionBuilder):
         """
         return list of actions that will pickup an item at caller's position
         """
-        here = get_position(caller, memory) 
+        here = get_position(caller, memory)
 
         for pct in memory.of_class(PositionPrecept):
             if here == pct.position and pct.entity is not caller:
                 action = PickupAction(caller)
                 action.effects.append(HasItemGoal(pct.entity))
-                yield action 
+                yield action
 
 exported_actions.append(pickup)
 
